@@ -1,3 +1,13 @@
+<?php 
+    if(isset($_POST['send'])) {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $service = $_POST['services'];
+        $message = $_POST['subject'];
+        mail("mustafa.louarat@gmail.com", "From: $email", "$name wants to talk about $service and said: $message");
+        header("location: index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +40,7 @@
                     <a href="#portfolio" class="nav-link">Portfolio</a>
                 </li>
                 <li>
-                    <a href="#experience" class="nav-link">Experience & Education</a>
+                    <a href="#experience" class="nav-link">Education</a>
                 </li>
                 <li>
                     <a href="#contact" class="nav-link">Contact</a>
@@ -202,20 +212,20 @@
                     <h1>Contact</h1>
                     <h6>let's work together</h6>
                 </div>
-                <form action="" data-aos="fade-up" data-aos-delay="300">
+                <form method="post" data-aos="fade-up" data-aos-delay="300">
                     <label for="name">name:</label>
                     <input type="text" id="name" name="name" placeholder="enter your name..." required>
                     <label for="name">Email:</label>
                     <input type="email" id="email" name="email" placeholder="enter your email..." required>
                     <label for="service">Services:</label>
                     <select name="services" id="service">
-                        <option value="">Web Design</option>
-                        <option value="">Web Development</option>
-                        <option value="">Web Design/Development</option>
+                        <option value="Web Design">Web Design</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Web Design/Development">Web Design/Development</option>
                     </select>
                     <label for="subject">Subject:</label>
                     <textarea name="subject" id="subject" cols="10" rows="10"></textarea>
-                    <input type="submit" value="submit">
+                    <input type="submit" value="submit" name="send">
 
                 </form>
             </div>
@@ -231,7 +241,14 @@
 
 
 
+    <script>
+        
+    window.onload = () => {
+       let bannerNode = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
+       bannerNode.parentNode.removeChild(bannerNode);
+}
 
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="main.js"></script>
